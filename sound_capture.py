@@ -40,6 +40,8 @@ SOUND_ON_LEVEL = 100
 # included wave plot
 PLOT_COUNT = 4
 
+SOUND_DATA_FILE = 'peaks.csv'
+
 fig, plot_list = plt.subplots(PLOT_COUNT, figsize=(15, 7))
 
 sound_name = input("Sound Name?")
@@ -159,7 +161,7 @@ while True:
 
     print(len(out), out)
 
-    with open('peaks_test_data.csv', 'a+', newline='') as csvfile:
+    with open(SOUND_DATA_FILE, 'a+', newline='') as csvfile:
         csv_writer = csv.writer(csvfile, delimiter=',')
         csv_writer.writerow(out)
 

@@ -5,7 +5,7 @@ import math
 from scipy.fftpack import fft
 from libraries.detect_peaks import detect_peaks
 from libraries.peaks_nn import PeakClassifier
-
+from libraries.post_to_server import send_post_on, send_post_off
 
 # stream constants
 FORMAT = pyaudio.paInt16
@@ -41,8 +41,10 @@ SOUND_ON_LEVEL = 100
 # included wave plot
 PLOT_COUNT = 4
 
+SOUND_DATA_FILE = 'peaks.csv'
+
 # instantiate nn and train
-pclass = PeakClassifier("peaks.csv")  # type: PeakClassifier
+pclass = PeakClassifier(SOUND_DATA_FILE)  # type: PeakClassifier
 pclass.train()
 
 fig, plot_list = plt.subplots(PLOT_COUNT, figsize=(15, 7))
@@ -109,6 +111,8 @@ while True:
         if np.max(data) < SOUND_OFF_LEVEL:
             break
 
+    send_post_off()
+
     # Wait for sound.  Sample quickly...
     print("Waiting For Sound")
     while True:
@@ -126,8 +130,6 @@ while True:
     # append 2 samples
     data = np.concatenate((data_pre, data_post))
 
-    # Compute fft and normalize.
-    print("Process Sample")
     # compute FFT and update line
     yf = fft(data)
     d1 = np.abs(yf)
@@ -171,8 +173,9 @@ while True:
 
     # now predict what kind of sound it is.
     z = np.asarray([out])
-    pclass.predict(z)
-
+    p = pclass.predict(z)
+    if p == "glass":
+        send_post_on()
     plt.pause(0.25)
 
 

@@ -1,19 +1,16 @@
+import warnings
 from unittest import TestCase
 
 import numpy
 import pandas
-import warnings
 from keras.layers import Dense
 from keras.models import Sequential
-from keras.utils import np_utils
+from keras.utils import ku
 from keras.wrappers.scikit_learn import KerasClassifier
 from sklearn.model_selection import KFold
 from sklearn.model_selection import cross_val_score
-# from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
-
-
 
 
 class PeakClassifier:
@@ -25,20 +22,24 @@ class PeakClassifier:
 
         # load dataset
         dataframe = pandas.read_csv(sample_file, header=None)
-        dataset = dataframe.values
-        z = dataset[2, 0:80].astype(float)
+        dataframe = dataframe.values
+
+        # 3rd row, first 80 columns
+        z = dataframe[2, 0:80].astype(float)
         print(z)
-        self.X = dataset[:, 0:80].astype(float)
-        self.Y = dataset[:, 80]
+        # all rows, first 80 columns (input)
+        self.X = dataframe[:, 0:80].astype(float)
+        # all rows, last column (output)
+        self.Y = dataframe[:, 80]
 
         if 1:
             warnings.filterwarnings(action='ignore', category=DeprecationWarning)
-            # encode class values as integers
+            # encodes labels (outputs) values as integers
             self.encoder = LabelEncoder()
             self.encoder.fit(self.Y)
             encoded_Y = self.encoder.transform(self.Y)
             # convert integers to dummy variables (i.e. one hot encoded)
-            self.dummy_y = np_utils.to_categorical(encoded_Y)
+            self.dummy_y = ku.to_categorical(encoded_Y)
 
         self.estimator = KerasClassifier(build_fn=self.baseline_model, epochs=200, batch_size=5, verbose=0)
 
@@ -49,7 +50,7 @@ class PeakClassifier:
         # create model
         model = Sequential()
         model.add(Dense(8, input_dim=80, activation='relu'))
-        model.add(Dense(3, activation='softmax'))
+        model.add(Dense(5, activation='softmax'))
         # Compile model
         model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
@@ -69,7 +70,7 @@ class PeakClassifier:
             self.estimator.fit(X_train, Y_train)
             self.predict(X_test)
         else:
-            X_train, X_test, Y_train, Y_test = train_test_split(self.X, self.dummy_y, test_size=0)
+            X_train, X_test, Y_train, Y_test = train_test_split(self.X, self.dummy_y)
             self.estimator.fit(X_train, Y_train)
 
     def predict(self, x_test):
