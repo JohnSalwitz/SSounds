@@ -5,12 +5,13 @@ import numpy
 import pandas
 from keras.layers import Dense
 from keras.models import Sequential
-from keras.utils import ku
+#from keras.utils import ku
 from keras.wrappers.scikit_learn import KerasClassifier
 from sklearn.model_selection import KFold
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
+import tensorflow as tf
 
 
 class PeakClassifier:
@@ -39,7 +40,7 @@ class PeakClassifier:
             self.encoder.fit(self.Y)
             encoded_Y = self.encoder.transform(self.Y)
             # convert integers to dummy variables (i.e. one hot encoded)
-            self.dummy_y = ku.to_categorical(encoded_Y)
+            self.dummy_y = tf.keras.utils.to_categorical(encoded_Y)
 
         self.estimator = KerasClassifier(build_fn=self.baseline_model, epochs=200, batch_size=5, verbose=0)
 

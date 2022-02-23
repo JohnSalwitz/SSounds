@@ -6,42 +6,7 @@ from scipy.fftpack import fft
 from libraries.detect_peaks import detect_peaks
 from libraries.peaks_nn import PeakClassifier
 from libraries.post_to_server import send_post_on, send_post_off
-
-# stream constants
-FORMAT = pyaudio.paInt16
-CHANNELS = 1
-
-# samples per second
-RATE = 44100
-
-# length in seconds
-PRE_SAMPLE_LENGTH = 0.05
-# size of sample = sample rates * sample_length
-CHUNK1 = int(RATE * PRE_SAMPLE_LENGTH)
-
-# length in seconds
-SAMPLE_LENGTH = 1.0
-# size of sample = sample rates * sample_length
-CHUNK2 = int(RATE * (SAMPLE_LENGTH-PRE_SAMPLE_LENGTH))
-
-# full sample...
-CHUNK = CHUNK1 + CHUNK2
-
-LOW_FREQUENCY = 0
-HIGH_FREQUENCY = 10000
-
-MIN_PEAK_DIST = 250
-
-# tolerance for sum-of square comparison
-MATCH_LIMIT = 1
-
-SOUND_OFF_LEVEL = 30
-SOUND_ON_LEVEL = 100
-
-# included wave plot
-PLOT_COUNT = 4
-
-SOUND_DATA_FILE = 'peaks.csv'
+from audio_settings import *
 
 # instantiate nn and train
 pclass = PeakClassifier(SOUND_DATA_FILE)  # type: PeakClassifier
