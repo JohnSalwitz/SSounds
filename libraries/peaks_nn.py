@@ -26,8 +26,8 @@ class PeakClassifier:
         dataframe = dataframe.values
 
         # 3rd row, first 80 columns
-        z = dataframe[2, 0:80].astype(float)
-        print(z)
+        # z = dataframe[2, 0:80].astype(float)
+        # print(z)
         # all rows, first 80 columns (input)
         self.X = dataframe[:, 0:80].astype(float)
         # all rows, last column (output)
@@ -51,7 +51,9 @@ class PeakClassifier:
         # create model
         model = Sequential()
         model.add(Dense(8, input_dim=80, activation='relu'))
-        model.add(Dense(5, activation='softmax'))
+
+        # to do -- understand this line (jfs).  Looks like it is the number of outputs
+        model.add(Dense(6, activation='softmax'))
         # Compile model
         model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 

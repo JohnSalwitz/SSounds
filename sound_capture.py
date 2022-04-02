@@ -16,6 +16,8 @@ def wait_for_level(min_level, max_level, chunk):
     sound_level = np.max(np_data)
     if (sound_level >= min_level) & (sound_level <= max_level):
       break
+    if i % 10 == 0:
+      print("Waiting On Sound Level: ", sound_level)
   return np_data
 
 

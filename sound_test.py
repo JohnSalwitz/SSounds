@@ -1,12 +1,23 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import pyaudio
 import math
 from scipy.fftpack import fft
 from libraries.detect_peaks import detect_peaks
 from libraries.peaks_nn import PeakClassifier
 from libraries.post_to_server import send_post_on, send_post_off
 from audio_settings import *
+
+
+def wait_for_level(min_level, max_level, chunk):
+  for i in range(10000):
+    in_data = stream.read(chunk)
+    np_data = np.frombuffer(in_data, dtype=np.int16)
+    sound_level = np.max(np_data)
+    if (sound_level >= min_level) & (sound_level <= max_level):
+      break
+  return np_data
+
+
 
 # instantiate nn and train
 pclass = PeakClassifier(SOUND_DATA_FILE)  # type: PeakClassifier
@@ -69,23 +80,10 @@ while True:
 
     # Wait for sound...
     print("Waiting For Quiet")
-    stream.start_stream()
-    while True:
-        in_data = stream.read(CHUNK)
-        data = np.fromstring(in_data, dtype=np.int16)
-        if np.max(data) < SOUND_OFF_LEVEL:
-            break
+    wait_for_level(0, SOUND_OFF_LEVEL, CHUNK)
 
-    send_post_off()
-
-    # Wait for sound.  Sample quickly...
     print("Waiting For Sound")
-    while True:
-        # read 1 chunk of data (small sample)
-        in_data = stream.read(CHUNK1)
-        data_pre = np.fromstring(in_data, dtype=np.int16)
-        if np.max(data_pre) > SOUND_ON_LEVEL:
-            break
+    data_pre = wait_for_level(SOUND_ON_LEVEL, 9999, CHUNK1)
 
     # Now take rest of sample
     in_data = stream.read(CHUNK2)

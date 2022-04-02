@@ -27,10 +27,11 @@ MIN_PEAK_DIST = 250
 # tolerance for sum-of square comparison
 MATCH_LIMIT = 1
 
-SOUND_OFF_LEVEL = 120
+SOUND_OFF_LEVEL = 160
 SOUND_ON_LEVEL = 400
 
 # included wave plot
 PLOT_COUNT = 4
 
 SOUND_DATA_FILE = 'peaks.csv'
+

@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b0af9f7-8d26-4a8d-a0e6-14cd1ca34cef" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/audio_settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sound_recorder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ShopSounds.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ShopSounds.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/audio_settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/peaks_nn.py" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/peaks_nn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/peaks.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/peaks_test_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/peaks_test_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sound_capture.py" beforeDir="false" afterPath="$PROJECT_DIR$/sound_capture.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sound_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/sound_test.py" afterDir="false" />
     </list>
@@ -199,9 +193,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.sound_test" />
+        <item itemvalue="Python tests.Unittests for peaks_nn.TestPeak_classifier" />
         <item itemvalue="Python.sound_capture" />
         <item itemvalue="Python.sound_recorder" />
-        <item itemvalue="Python tests.Unittests for peaks_nn.TestPeak_classifier" />
         <item itemvalue="Python.audio_spectrum_capture" />
       </list>
     </recent_temporary>
@@ -229,8 +223,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1529376943887</updated>
-      <workItem from="1645645079460" duration="4442000" />
+      <workItem from="1645645079460" duration="4472000" />
+      <workItem from="1645651677909" duration="283000" />
+      <workItem from="1645664023013" duration="3410000" />
+      <workItem from="1646110491009" duration="1744000" />
+      <workItem from="1648939177944" duration="25000" />
     </task>
+    <task id="LOCAL-00001" summary="cleaned up some of the code.  added docs.  partial testing on osx">
+      <created>1645650788378</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1645650788378</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -268,9 +274,14 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="cleaned up some of the code.  added docs.  partial testing on osx" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaned up some of the code.  added docs.  partial testing on osx" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SSounds$Unittests_for_peaks_nn_TestPeak_classifier.coverage" NAME="Unittests for peaks_nn.TestPeak_classifier Coverage Results" MODIFIED="1645666575002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libraries" />
     <SUITE FILE_PATH="coverage/SSounds$sound_recorder.coverage" NAME="sound_recorder Coverage Results" MODIFIED="1645645135643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SSounds$sound_capture.coverage" NAME="sound_capture Coverage Results" MODIFIED="1645650525655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SSounds$sound_test.coverage" NAME="sound_test Coverage Results" MODIFIED="1645650583781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSounds$sound_capture.coverage" NAME="sound_capture Coverage Results" MODIFIED="1645665249189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSounds$sound_test.coverage" NAME="sound_test Coverage Results" MODIFIED="1645666646758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
